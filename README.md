@@ -7,10 +7,12 @@ Also, it will restrict the user to share images publicly as the company can clai
 
 This project is motivated by this idea to remove ads in images automatically using Deep Learning technique.   
 
-Google slides for the project can be found [here]
+Google slides for the project can be found [here](https://docs.google.com/presentation/d/1sWU5M_oBRgBjet9fjsCapiLf3tbw1_htFnHM6wIR26U/edit?usp=sharing)
 
 Installation Guide:
 Cloning the repo gives you the object detection and infilling model.
+You also need to download the weights for Object detection and image infilling.
+Both can be found [here](https://drive.google.com/drive/folders/1r7PEIqbsgZBY42kW_yIpm8Jk1hbQ8POr?usp=sharing)
 
 After using it on a sample image with ad, following steps are to be followed:
 1. Detect the logo in the image       
