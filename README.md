@@ -9,6 +9,18 @@ This project is motivated by this idea to remove ads in images automatically usi
 
 Google slides for the project can be found [here](https://docs.google.com/presentation/d/1sWU5M_oBRgBjet9fjsCapiLf3tbw1_htFnHM6wIR26U/edit?usp=sharing)
 
+Overview of the project:   
+The aim is to remove the logo from the image.   
+This happens in two major steps:     
+   1. Logo Detection and then mask the logo
+   2. Infill the masked part    
+
+    
+Results:    
+Here are the results of the pipeline:    
+The image on the left is the input image with company logo/ad. Then we have two images which after masking the logo and the one after infilling.
+![alt text] (https://github.com/KhyatiGanatra/DeepPhotoshop/images/1.jpg "Input Image with logo')
+
 Installation Guide:
 Cloning the repo gives you the object detection and infilling model.
 You also need to download the weights for Object detection and image infilling.
