@@ -18,8 +18,8 @@ This happens in two major steps:
     
 Results:    
 Here are the results of the pipeline:    
-The image on the left is the input image with company logo/ad. Then we have two images which after masking the logo and the one after infilling.
-![alt text] (https://github.com/KhyatiGanatra/DeepPhotoshop/images/1.jpg "Input Image with logo')
+The image on the left is the input image with company logo/ad. Then we have two images which after masking the logo and the one after infilling.    
+![input image 1](https://github.com/KhyatiGanatra/DeepPhotoshop/images/1.jpg)
 
 Installation Guide:
 Cloning the repo gives you the object detection and infilling model.
