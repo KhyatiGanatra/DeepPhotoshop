@@ -44,4 +44,4 @@ After using it on a sample image with ad, following steps are to be followed:
    cd ..   
    python predict.py   
      
-This will generate output images in the data/custom_test_images folder   
+This will generate output images in the data/custom_results folder   
