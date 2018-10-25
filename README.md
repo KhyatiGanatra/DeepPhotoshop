@@ -29,15 +29,15 @@ You also need to download the weights for Object detection and image infilling.
 Both can be found [here](https://drive.google.com/drive/folders/1r7PEIqbsgZBY42kW_yIpm8Jk1hbQ8POr?usp=sharing)
 
 After using it on a sample image with ad, following steps are to be followed:
-0. Convert image in required dimensions.
-python src/process.py /path_to_input_image
-1. Detect the logo in the image       
+0. Put the image in test_infilling and convert image in required dimensions.
+   mv /path_to_input_image data /data/test_infilling/test/
+   python src/process.py /data/test_infilling/test/image_name
+1. Detect the logo in the image     
    cd darkent    
    ./darknet detect cfg/yolov2_logo_detection.cfg YOLOv2_logo_detection_10000th_iteration.weights /path_to_image
-   cd ..       
+   cd ..        
    
 2. Mask the logo
-   cd PConv-Keras_KKG
    vim libs/util.py
    copy the values of Left, Top, Rght, Bottom in the file util.py     
 3. Use infilling model to generate newly filled image   
