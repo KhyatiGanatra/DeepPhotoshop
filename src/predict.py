@@ -16,6 +16,10 @@ config = tf.ConfigProto( device_count = {'GPU': 1 , 'CPU': 4} )
 sess = tf.Session(config=config) 
 keras.backend.set_session(sess)
 
+import sys
+import os
+sys.path.append(os.path.join(os.path.join(os.path.dirname(sys.path[0]))))
+
 import cv2
 import matplotlib
 import matplotlib.pyplot as plt
@@ -24,19 +28,10 @@ from IPython.display import clear_output
 
 from libs.pconv_model import PConvUnet
 from libs.util import random_mask, custom_mask
-import file_sort
+#import file_sort
 
 import os
 import re
-
-def get_latest_weights_file():
-	log_dir = "./logs/"
-	files = os.listdir(log_dir)
-	absnames = []
-	for file in files:
-		absnames.append(log_dir + file)
-	latest_file = max(absnames, key=os.path.getctime)
-	return latest_file
 
 plt.ioff()
 
@@ -47,14 +42,12 @@ TEST_DIR = r'/home/ubuntu/Insight_AI/test_infilling/'
 class DataGenerator(ImageDataGenerator):
 	def flow_from_directory(self, directory, *args, **kwargs):
 		generator = super().flow_from_directory(directory, class_mode=None, *args, **kwargs)
-
+		print (generator)
 		while True:
 			# Get augmentend image samples
 			ori = next(generator)
 			#ori = np.random.randInt(512,512)
-			# Get masks for each image sample
-			#fileName = FILE_DIR + 'resized_COCA_COLA.jpg'
-			#print (fileName)
+			# Get masks for images
 			mask = np.stack([custom_mask(ori.shape[1], ori.shape[2]) for _ in range(ori.shape[0])], axis=0)
 
 			# Apply masks to all image sample
@@ -108,11 +101,7 @@ def plot_callback(model):
 
 # Instantiate the model
 model = PConvUnet()
-model = PConvUnet(weight_filepath='data/logs/')
-latest_weights = get_latest_weights_file()
-print (latest_weights)
-model.load(latest_weights)
-
+model.load('/home/ubuntu/Insight_AI/DeepPhotoshop/data/logs/382_weights_2018-10-16-23-26-19.h5')
 n = 0
 for (masked, mask), ori in tqdm(test_generator):
 	print(masked, mask, "-----")	
@@ -133,7 +122,7 @@ for (masked, mask), ori in tqdm(test_generator):
 		axes[1].xaxis.set_major_formatter(NullFormatter())
 		axes[1].yaxis.set_major_formatter(NullFormatter())
 
-		plt.savefig(r'data/custom_test_samples/img_{}_{}.png'.format(i, pred_time))
+		plt.savefig(r'../data/custom_results/img_{}_{}.png'.format(i, pred_time))
 		plt.close()
 		n += 1
 
