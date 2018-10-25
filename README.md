@@ -20,9 +20,10 @@ Results:
 Here are the results of the pipeline:    
 The image on the left is the input image with company logo/ad. Then we have two images which after masking the logo and the one after infilling.    
 
-<img src='images/1.jpg' width='250' height='250'/> <img src='images/1_op.png' width='600' height='300'/> 
-<img src='images/3.jpg' width='250' height='250'/> <img src='images/3_op.png' width='600' height='300'/>
-<img src='images/4.jpg' width='250' height='250'/> <img src='images/4_op.png' width='600' height='300'/>
+
+<img src='images/3.jpg' width='250' height='250'/> <img src='images/3_op.png' width='600' height='270'/>
+<img src='images/1.jpg' width='250' height='250'/> <img src='images/1_op.png' width='600' height='270'/> 
+<img src='images/4.jpg' width='250' height='250'/> <img src='images/4_op.png' width='600' height='270'/>
 
 Installation Guide:
 Cloning the repo gives you the object detection and infilling model.
