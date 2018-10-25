@@ -19,7 +19,12 @@ This happens in two major steps:
 Results:    
 Here are the results of the pipeline:    
 The image on the left is the input image with company logo/ad. Then we have two images which after masking the logo and the one after infilling.    
-![input image 1](https://github.com/KhyatiGanatra/DeepPhotoshop/images/1.jpg)
+
+<img src='images/1.jpg' width='250' height='250'/> <img src='images/1_op.png' width='600' height='300'/> 
+<img src='images/2.jpg' width='250' height='250'/> <img src='images/2_op.png' width='600' height='300'/>
+<img src='images/3.jpg' width='250' height='250'/> <img src='images/3_op.png' width='600' height='300'/>
+<img src='images/4.jpg' width='250' height='250'/> <img src='images/4_op.png' width='600' height='300'/>
+<img src='images/5.jpg' width='250' height='250'/> <img src='images/5_op.png' width='600' height='300'/>
 
 Installation Guide:
 Cloning the repo gives you the object detection and infilling model.
