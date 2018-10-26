@@ -33,7 +33,7 @@ This takes the masked image and the mask as an input. As an output it gives an i
 
 ### Few more results:
 <img src='images/1.jpg' width='250' height='250'/><img src='images/1_op.png' width='600' height='270'/> 
-<img src='images/4.jpg' width='250' height='250'/><img src='images/4_op.png' width='600' height='270'/>
+<img src='images/5.jpg' width='250' height='250'/><img src='images/5_op.png' width='600' height='270'/>
 
 ## Installation Guide:
 Cloning the repo gives you the object detection and infilling model.
