@@ -37,25 +37,25 @@ plt.ioff()
 
 BATCH_SIZE = 5
 
-TEST_DIR = r'/home/ubuntu/Insight_AI/test_infilling/'
+TEST_DIR = r'./data/test_infilling/'
 
 class DataGenerator(ImageDataGenerator):
 	def flow_from_directory(self, directory, *args, **kwargs):
 		generator = super().flow_from_directory(directory, class_mode=None, *args, **kwargs)
-		print (generator)
+
 		while True:
 			# Get augmentend image samples
 			ori = next(generator)
-			#ori = np.random.randInt(512,512)
 			# Get masks for images
 			mask = np.stack([custom_mask(ori.shape[1], ori.shape[2]) for _ in range(ori.shape[0])], axis=0)
-
+						
 			# Apply masks to all image sample
 			masked = deepcopy(ori)
 			masked[mask == 0] = 1
 
 			# Yield ([ori, masl],  ori) training batches
 			# print(masked.shape, ori.shape)
+			print (masked.shape)
 			gc.collect()
 			yield [masked, mask], ori
 
@@ -101,11 +101,9 @@ def plot_callback(model):
 
 # Instantiate the model
 model = PConvUnet()
-model.load('/home/ubuntu/Insight_AI/DeepPhotoshop/data/logs/382_weights_2018-10-16-23-26-19.h5')
+model.load('./data/logs/382_weights_2018-10-16-23-26-19.h5')
 n = 0
 for (masked, mask), ori in tqdm(test_generator):
-	print(masked, mask, "-----")	
-
 	# Run predictions for this batch of images
 	pred_img = model.predict([masked, mask])
 	pred_time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
@@ -122,7 +120,7 @@ for (masked, mask), ori in tqdm(test_generator):
 		axes[1].xaxis.set_major_formatter(NullFormatter())
 		axes[1].yaxis.set_major_formatter(NullFormatter())
 
-		plt.savefig(r'../data/custom_results/img_{}_{}.png'.format(i, pred_time))
+		plt.savefig(r'./data/custom_results/img_{}_{}.png'.format(i, pred_time))
 		plt.close()
 		n += 1
 
