@@ -11,7 +11,7 @@
 #include "stb_image_write.h"
 
 int windows = 0;
-
+FILE *fptr;
 float colors[6][3] = { {1,0,1}, {0,0,1},{0,1,1},{0,1,0},{1,1,0},{1,0,0} };
 
 float get_color(int c, int x, int max)
@@ -291,7 +291,12 @@ void draw_detections(image im, detection *dets, int num, float thresh, char **na
             if(bot > im.h-1) bot = im.h-1;
 	    
 	    // Print bounding box values
-	    printf("Bounding Box: Left=%d, Top=%d, Right=%d, Bottom=%d\n", left, top, right, bot); 
+	    fptr = fopen("../coords.txt","w");
+	    //print("Bounding Box: Left=%d, Top=%d, Right=%d, Bottom=%d", left, top, right, bot);
+	    fprintf(fptr, "left top bottom right\n");
+	    fprintf(fptr, "%d %d %d %d",left, top, bot, right); 
+	    printf("left=%d, top=%d, right=%d, bottom=%d\n",left, top, right, bot);
+	    fclose(fptr);
             draw_box_width(im, left, top, right, bot, width, red, green, blue);
             if (alphabet) {
                 image label = get_label(alphabet, labelstr, (im.h*.03));
