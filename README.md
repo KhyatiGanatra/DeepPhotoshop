@@ -36,7 +36,11 @@ This takes the masked image and the mask as an input. As an output it gives an i
 <img src='images/5.jpg' width='250' height='250'/><img src='images/5_op.png' width='600' height='270'/>
 
 ## Installation Guide:
-Cloning the repo gives you the object detection and infilling model.
+### Prerequisites:
+#### YOLO
+
+
+
 You also need to download the weights for Object detection and image infilling.
 Both can be found [here](https://drive.google.com/drive/folders/1r7PEIqbsgZBY42kW_yIpm8Jk1hbQ8POr?usp=sharing)
 
