@@ -42,14 +42,13 @@ Both can be found [here](https://drive.google.com/drive/folders/1r7PEIqbsgZBY42k
 
 After using it on a sample image with ad, following steps are to be followed:    
 0. Put the image in test_infilling and convert image in required dimensions.    
-   python src/process.py /data/test_infilling/test/image_name    
+   python src/processing.py ./data/test_infilling/test/image_name    
 1. Detect the logo in the image     
    cd darknet    
-   ./darknet detect cfg/yolov2_logo_detection.cfg YOLOv2_logo_detection_10000th_iteration.weights /path_to_image    
+   ./darknet detect cfg/yolov2_logo_detection.cfg YOLOv2_logo_detection_10000th_iteration.weights ../data/test_infilling/test/image_name 
    cd ..            
    
 3. Use infilling model to generate newly filled image   
-   cd ..   
-   python predict.py   
+   python src/predict.py   
      
 This will generate output images in the data/custom_results folder   
