@@ -28,31 +28,31 @@ Here, we identify the company logo and draw bounding box around it. We just need
 <img src='./images/Google-4.jpg' width='312' height='312'/>
 
 ### Image Infilling:
-This takes the masked image and the mask as an input. As an output it gives an image after filling the gap.    
-<img src='data/results/img_0_2018-10-20-01-54-04.png'/>
+This takes the masked image as an input. As an output it gives an image after filling the gap.    
+<img src='./images/4_op.png' width='612' height='300'/>
 
 ### Few more results:
 <img src='images/1.jpg' width='250' height='250'/><img src='images/1_op.png' width='600' height='270'/> 
 <img src='images/5.jpg' width='250' height='250'/><img src='images/5_op.png' width='600' height='270'/>
 
 ## Installation Guide:
-### Prerequisites:
-#### YOLO
 
-
-
+CLone this repo.    
 You also need to download the weights for Object detection and image infilling.
 Both can be found [here](https://drive.google.com/drive/folders/1r7PEIqbsgZBY42kW_yIpm8Jk1hbQ8POr?usp=sharing)
+You can put these weights in the yolo_custom_files directory.    
 
-After using it on a sample image with ad, following steps are to be followed:    
-0. Put the image in test_infilling and convert image in required dimensions.    
+For using it on a sample image with ad (you can use one of the images from images directory if needed), following steps are to be followed:    
+0. Put the image in test_infilling/test and convert image in required dimensions.    
    python src/processing.py ./data/test_infilling/test/image_name    
 1. Detect the logo in the image     
    cd darknet    
-   ./darknet detect cfg/yolov2_logo_detection.cfg YOLOv2_logo_detection_10000th_iteration.weights ../data/test_infilling/test/image_name 
+   ./darknet detect ../yolo_custom_files/yolov2_logo_detection.cfg ../yolo_custom_files/YOLOv2_logo_detection_10000th_iteration.weights ../data/test_infilling/test/image_name 
    cd ..            
    
 3. Use infilling model to generate newly filled image   
-   python src/predict.py   
+   python src/predict.py  
+   
+You should be able to see the images in custom_results folder.
      
 This will generate output images in the data/custom_results folder   
