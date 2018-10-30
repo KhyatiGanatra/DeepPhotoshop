@@ -37,7 +37,7 @@ This takes the masked image as an input. As an output it gives an image after fi
 
 ## Installation Guide:
 
-CLone this repo.    
+Clone this repo.    
 You also need to download the weights for Object detection and image infilling.
 Both can be found [here](https://drive.google.com/drive/folders/1r7PEIqbsgZBY42kW_yIpm8Jk1hbQ8POr?usp=sharing)
 You can put these weights in the yolo_custom_files directory.    
