@@ -54,8 +54,6 @@ class DataGenerator(ImageDataGenerator):
 			masked[mask == 0] = 1
 
 			# Yield ([ori, masl],  ori) training batches
-			# print(masked.shape, ori.shape)
-			print (masked.shape)
 			gc.collect()
 			yield [masked, mask], ori
 
@@ -125,6 +123,6 @@ for (masked, mask), ori in tqdm(test_generator):
 		n += 1
 
 	# Only create predictions for about 100 images
-	if n > 10:
+	if n > 5:
 		break
 
