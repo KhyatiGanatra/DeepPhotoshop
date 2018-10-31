@@ -37,22 +37,37 @@ This takes the masked image as an input. As an output it gives an image after fi
 
 ## Installation Guide:
 
-Clone this repo.    
-You also need to download the weights for Object detection and image infilling.
-Both can be found [here](https://drive.google.com/drive/folders/1r7PEIqbsgZBY42kW_yIpm8Jk1hbQ8POr?usp=sharing)
-You can put these weights in the yolo_custom_files directory.    
+Clone this repo and setup the object detection module.      
+repo_name=DeepPhotoshop     
+username=KhyatiGanatra     
+git clone https://github.com/$username/$repo_name     
+cd $repo_name    
+bash ./build/prereq.sh        
 
+You also need to download the weights for Object detection and image infilling.
+Both can be found [here](https://drive.google.com/drive/folders/1r7PEIqbsgZBY42kW_yIpm8Jk1hbQ8POr?usp=sharing)    
+You should put .weights (logo detection weights) file in darknet directory and .h5 (infilling weights) file in DeepPhotoshop/data/logs directory.    
+
+## Usage:
 For using it on a sample image with ad (you can use one of the images from images directory if needed), following steps are to be followed:    
 0. Put the image in test_infilling/test and convert image in required dimensions.    
    python src/processing.py ./data/test_infilling/test/image_name    
 1. Detect the logo in the image     
    cd darknet    
-   ./darknet detect ../yolo_custom_files/yolov2_logo_detection.cfg ../yolo_custom_files/YOLOv2_logo_detection_10000th_iteration.weights ../data/test_infilling/test/image_name 
+   ./darknet detect cfg/yolov2_logo_detection.cfg YOLOv2_logo_detection_10000th_iteration.weights ../data/test_infilling/test/image_name 
    cd ..            
+   
+   Note: If you do not see any output mentioning co-ordinates of box with % confidence, it means there was no object detected in the image and you should try with a different image. Currenlty, Object detection works for logos in Flickr-47 dataset. 
    
 3. Use infilling model to generate newly filled image   
    python src/predict.py  
    
 You should be able to see the images in custom_results folder.
      
-This will generate output images in the data/custom_results folder   
+This will generate output images in the data/custom_results folder 
+
+
+### References:
+* For logo detection, weights obtained as per [this](https://medium.com/@akarshzingade/logo-detection-using-yolov2-8cda5a68740e) post    
+* For image infilling, used [this](https://medium.com/@akarshzingade/logo-detection-using-yolov2-8cda5a68740e) as reference    
+* Inspired from [this](https://news.developer.nvidia.com/new-ai-imaging-technique-reconstructs-photos-with-realistic-results/?ncid=nv-twi-37107) by Nvidia
