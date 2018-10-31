@@ -37,13 +37,15 @@ This takes the masked image as an input. As an output it gives an image after fi
 
 ## Installation Guide:
 
-Clone this repo and setup the object detection module.      
+Clone this repo and setup the object detection module.  
+```
 repo_name=DeepPhotoshop     
 username=KhyatiGanatra     
 git clone https://github.com/$username/$repo_name     
 cd $repo_name    
-bash ./build/prereq.sh        
-
+bash ./build/prereq.sh
+pip install -r ./build/requirements.txt
+```
 You also need to download the weights for Object detection and image infilling.
 Both can be found [here](https://drive.google.com/drive/folders/1r7PEIqbsgZBY42kW_yIpm8Jk1hbQ8POr?usp=sharing)    
 You should put .weights (logo detection weights) file in darknet directory and .h5 (infilling weights) file in DeepPhotoshop/data/logs directory.    
